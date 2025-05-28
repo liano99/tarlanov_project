@@ -13,7 +13,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # можно заменить на нужную версию
+          python-version: '3.9'
 
       - name: Install dependencies
         run: |
@@ -22,6 +22,11 @@ jobs:
           pip install --upgrade pip
           pip install pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Show current directory and files
+        run: |
+          pwd
+          ls -R
 
       - name: Run tests
         run: |
