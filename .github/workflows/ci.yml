@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -12,22 +13,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-      - name: Show working directory
-        run: |
-          pwd
-          ls -R
+          python-version: '3.9'  # можно заменить на нужную версию
 
       - name: Install dependencies
         run: |
           python -m venv venv
           source venv/bin/activate
-          pip install -r requirements.txt
-
-      - name: Show current directory and files
-        run: |
-          pwd
-          ls -la
+          pip install --upgrade pip
+          pip install pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run tests
         run: |
