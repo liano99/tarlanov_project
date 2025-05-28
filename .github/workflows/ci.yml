@@ -23,8 +23,9 @@ jobs:
       - name: Run tests
         run: |
           source venv/bin/activate
-          pytest
+
 - name: Show current directory and files
   run: |
     pwd
     ls -la
+pytest
