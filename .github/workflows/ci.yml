@@ -20,12 +20,12 @@ jobs:
           source venv/bin/activate
           pip install -r src/requirements.txt
 
+      - name: Show current directory and files
+        run: |
+          pwd
+          ls -la
+
       - name: Run tests
         run: |
           source venv/bin/activate
-
-- name: Show current directory and files
-  run: |
-    pwd
-    ls -la
-pytest
+          pytest
